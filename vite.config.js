@@ -14,7 +14,7 @@ export default defineConfig({
     postcss: {},
   },
   server: {
-    host: '192.168.31.8',
+    host: 'https://website.tserm.com/',
     port: 8085,
   },
 })
