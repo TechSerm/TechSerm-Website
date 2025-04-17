@@ -1,5 +1,8 @@
 <script setup>
 import AboutSectionRight from './AboutSectionRight.vue'
+defineProps({
+  data: Object
+})
 </script>
 <template>
     <div class="font-bold techserm-text-blue text-center text-xl">
@@ -13,12 +16,7 @@ import AboutSectionRight from './AboutSectionRight.vue'
             <!-- Left Section: 4/6 -->
             <div class="col-span-7 md:col-span-4 space-y-6">
                 <div class="text-lg techserm-text-black text-justify">
-                    Streams Tech provides custom software development and environmental consultancy services to
-                    government and commercial clients. Our full-stack software developers, specializing in Geographic
-                    Information System (GIS) applications, data analytics, database design and cloud integration, are
-                    committed to empowering clients to build a better environment for tomorrow. Streams Tech’s clients
-                    range from Fortune 500 companies and large non-government organizations to small firms on five
-                    continents.
+                    {{ data.who_we_are_descriptions }}
                 </div>
                 <div>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
@@ -61,7 +59,7 @@ import AboutSectionRight from './AboutSectionRight.vue'
 
             <!-- Right Section: 2/6 -->
             <div class="col-span-7 md:col-span-3">
-                <AboutSectionRight />
+                <AboutSectionRight :data="data" />
             </div>
         </div>
     </div>

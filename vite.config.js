@@ -24,7 +24,7 @@ export default defineConfig({
     },
   },
   server: {
-    host: 'https://website.tserm.com/',
+    host: '192.168.31.8',
     port: 8085,
   },
 })
