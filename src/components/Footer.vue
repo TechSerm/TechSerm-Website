@@ -1,6 +1,6 @@
 <template>
 
-    <footer class="text-white"
+    <!-- <footer class="text-white"
         style="background-image: url('https://streamstech.com/wp-content/uploads/2022/11/Footer.webp'); background-repeat: repeat; background-position: center top;">
         <div class="">
             <div class="shape absolute left-0 top-0 opacity-5 h-full overflow-hidden w-1/3">
@@ -37,7 +37,7 @@
                 &copy; 2025 TechSerm. All rights reserved.
             </div>
         </div>
-    </footer>
+    </footer> -->
 </template>
 
 <script setup>
