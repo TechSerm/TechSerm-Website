@@ -1,9 +1,9 @@
 <template>
     <div class="text-center">
-        <div class="font-bold techserm-text-blue text-xl">
+        <div class="font-bold mb-1 techserm-text-blue text-xl">
             Our Project
         </div>
-        <div class="mb-10 techserm-text-black font-extrabold text-4xl">
+        <div class="mb-16 techserm-text-black font-extrabold text-4xl">
             Projects
         </div>
 

@@ -1,9 +1,9 @@
 <template>
     <div class="">
-        <div class="font-bold techserm-text-blue text-center text-xl">
+        <div class="font-bold mb-1 techserm-text-blue text-center text-xl">
             What We Do
         </div>
-        <div class="mb-10 techserm-text-black font-extrabold text-center text-4xl">
+        <div class="mb-16 techserm-text-black font-extrabold text-center text-4xl">
             Our Service
         </div>
 

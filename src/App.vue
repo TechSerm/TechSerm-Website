@@ -7,13 +7,14 @@ import WhySection from './components/WhySection.vue'
 import AboutSection from './components/AboutSection.vue'
 import Footer from './components/Footer.vue'
 import ProjectSection from './components/ProjectSection.vue'
+import Loader from './components/Loader.vue'
 
 const fetchedData = ref(null)
 const isLoading = ref(true)
 
 onMounted(async () => {
   try {
-    const res = await fetch('https://admin.tserm.com/api/data')
+    const res = await fetch('https://admin.techserm.io/api/data')
     const data = await res.json()
     fetchedData.value = data
   } catch (error) {
@@ -26,37 +27,19 @@ onMounted(async () => {
 
 <template>
   <div class="min-h-screen">
-    <div v-if="isLoading" class="fixed inset-0 z-50 flex justify-center items-center bg-white/90 backdrop-blur-sm">
-      <!-- Enhanced spinner with gradient and pulse effect -->
-      <div class="relative">
-        <!-- Outer ring with gradient -->
-        <div class="w-16 h-16 rounded-full border-4 border-gray-200"></div>
-
-        <!-- Animated spinner with gradient -->
-        <div
-          class="absolute top-0 left-0 w-16 h-16 rounded-full border-4 border-transparent border-t-purple-500 border-r-[#009EE0] animate-spin">
-        </div>
-
-        <!-- Optional: Logo or brand mark in center -->
-        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-          <svg class="w-6 h-6 text-gray-400 animate-pulse" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M12 2L4 12l8 10 8-10-8-10z" />
-          </svg>
-        </div>
-
-        <!-- Optional: Loading text -->
-        <p class="mt-4 text-center text-sm font-medium text-[#003D5A] animate-pulse">Loading...</p>
-      </div>
-    </div>
-
+    <Loader v-if="isLoading" />
     <div v-else>
-      <div class="bg-gray-50">
+      <div class="bg-gray-0">
         <Navbar :data="fetchedData" />
         <section id="home" class="container techserm-page-width min-h-[100vh] pt-10 md:pt-0 flex items-center">
           <HeaderSection :data="fetchedData" />
         </section>
       </div>
-      <section id="about" class="bg-white pt-10 pb-22">
+      <div class="text-center text-5xl mb-10">
+          Website is under construction
+      </div>
+      <!-- <section id="about" class="bg-gray-0 rounded-t-[30%] pt-10 pb-22">
+
         <div class="container techserm-page-width">
           <AboutSection :data="fetchedData" />
         </div>
@@ -66,7 +49,7 @@ onMounted(async () => {
           <WhySection :data="fetchedData" />
         </div>
       </div>
-      <section id="services" class="bg-gray-50 pt-10 pb-26">
+      <section id="services" class="bg-gray-0 pt-10 pb-26">
         <div class="container techserm-page-width">
           <ServicesSection :data="fetchedData" />
         </div>
@@ -76,20 +59,8 @@ onMounted(async () => {
           <ProjectSection :data="fetchedData" />
         </div>
       </section>
-      <Footer :data="fetchedData" />
+      <Footer :data="fetchedData" /> -->
     </div>
   </div>
 </template>
 
-<style scoped>
-/* Spinner animation */
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.animate-spin {
-  animation: spin 1s linear infinite;
-}
-</style>

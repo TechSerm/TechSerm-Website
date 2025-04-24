@@ -4,7 +4,7 @@ import vue from '@vitejs/plugin-vue'
 import tailwindcss from '@tailwindcss/vite'
 import htmlMinifier from 'vite-plugin-html-minifier';
 // https://vite.dev/config/
-var url = "https://websote.tserm.com";
+var url = "https://admin.tserm.com";
 
 
 export default defineConfig({

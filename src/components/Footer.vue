@@ -1,7 +1,12 @@
 <template>
-    <footer class="text-white">
+
+    <footer class="text-white"
+        style="background-image: url('https://streamstech.com/wp-content/uploads/2022/11/Footer.webp'); background-repeat: repeat; background-position: center top;">
         <div class="">
-            <div class="bg-[#003D5A]/95 pt-10 pb-10">
+            <div class="shape absolute left-0 top-0 opacity-5 h-full overflow-hidden w-1/3">
+                <img src="./src/assets/footer-shape-left.png" alt="">
+            </div>
+            <div class="pt-10 pb-10">
 
                 <div class=" container techserm-page-width grid grid-cols-1 md:grid-cols-3 gap-8">
                     <div>
@@ -28,7 +33,7 @@
                 </div>
             </div>
 
-            <div class="pt-6 pb-6 techserm-bg-black  font-bold text-md text-center">
+            <div class="pt-6 pb-6 font-bold text-md text-center">
                 &copy; 2025 TechSerm. All rights reserved.
             </div>
         </div>
