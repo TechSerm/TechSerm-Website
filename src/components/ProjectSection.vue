@@ -1,11 +1,6 @@
 <template>
     <div class="text-center">
-        <div class="font-bold mb-1 techserm-text-blue text-xl">
-            Our Project
-        </div>
-        <div class="mb-16 techserm-text-black font-extrabold text-4xl">
-            Projects
-        </div>
+        
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
     <div v-for="(project, index) in projects" :key="index"
@@ -23,11 +18,11 @@
         <!-- Content area with flex-grow to push tech to bottom -->
         <div class="flex flex-col flex-grow">
             <div class="mb-0 p-3 pt-5">
-                <a href="#" class="">
+                <router-link :to="'projects/project-1'"  class="">
                     <h3 class="text-xl font-extrabold techserm-text-blue mb-2">
                         <span class="text-xl hover:text-blue-600 ">{{ project.title }}</span> <span class="text-blue-400 hover:text-blue-500  text-md"><i class="fa fa-external-link" aria-hidden="true"></i></span>
                     </h3>
-                </a>
+                </router-link>
                 <p class="text-gray-600 text-sm text-justify leading-relaxed">
                     {{ project.description }}
                 </p>

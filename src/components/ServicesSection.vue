@@ -1,25 +1,26 @@
 <template>
     <div class="">
-        <div class="font-bold mb-1 techserm-text-blue text-center text-xl">
-            What We Do
-        </div>
-        <div class="mb-16 techserm-text-black font-extrabold text-center text-4xl">
-            Our Service
+        <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-bold techserm-text-black mb-4">
+                Our Services
+            </h2>
+            <div class="w-24 h-1 techserm-bg-blue mx-auto"></div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div v-for="service in services" :key="service.title"
-                class="bg-white hover:border-blue-500 border-1 border-gray-200 border-dashed rounded-xl overflow-hidden transition-all duration-300  ">
+                class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
                 <div class="p-8 text-center">
-                    <!-- Hexagonal Icon Container -->
-                    <div class="hexagon-container mx-auto mb-8">
-                        <div class="hexagon bg-blue-50 techserm-text-blue">
-                            <i :class="`fas ${service.icon}`"></i>
+                    <!-- Icon Container -->
+                    <div class="icon-container mx-auto mb-6">
+                        <div class="icon-circle bg-blue-100 text-blue-600">
+                            <i :class="`fas ${service.icon} text-2xl`"></i>
                         </div>
                     </div>
 
-                    <h3 class="text-2xl font-semibold techserm-text-black mb-4">{{ service.title }}</h3>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">{{ service.title }}</h3>
                     <p class="text-gray-600 leading-relaxed">{{ service.description }}</p>
+                    
                 </div>
             </div>
         </div>
@@ -29,64 +30,52 @@
 <script setup>
 const services = [
     {
-        title: 'Build From Scratch',
-        icon: 'fa-search',
-        description: 'Comprehensive market research and data analysis to develop winning strategies.'
+        title: 'Custom Software Development',
+        icon: 'fa-laptop-code',
+        description: 'We build tailored software solutions from the ground up. Our team transforms your ideas into powerful, scalable applications with exceptional service and reliable results.'
     },
     {
-        title: 'Prototype Development',
-        icon: 'fa-cube',
-        description: 'Rapid prototyping to transform ideas into tangible models for testing.'
+        title: 'Web Application Development',
+        icon: 'fa-globe',
+        description: 'We deliver cutting-edge web applications using modern technologies to build fast, secure, and scalable platforms that align with your business goals.'
     },
     {
-        title: 'Product Development',
-        icon: 'fa-code',
-        description: 'End-to-end development of scalable, high-performance solutions.'
-    },
-    {
-        title: 'Product Development',
-        icon: 'fa-code',
-        description: 'End-to-end development of scalable, high-performance solutions.'
-    },
-    {
-        title: 'Product Development',
-        icon: 'fa-code',
-        description: 'End-to-end development of scalable, high-performance solutions.'
-    },
-    {
-        title: 'Product Development',
-        icon: 'fa-code',
-        description: 'End-to-end development of scalable, high-performance solutions.'
+        title: 'Mobile Application Development',
+        icon: 'fa-mobile-alt',
+        description: 'We craft high-performance mobile apps for Android and iOS platforms, creating intuitive, responsive applications that delight users and drive engagement.'
     }
 ]
 </script>
 
 <style scoped>
-/* Hexagon CSS */
-.hexagon-container {
-    width: 85px;
-    height: 95px;
+.icon-container {
+    width: 80px;
+    height: 80px;
     position: relative;
 }
 
-.hexagon {
+.icon-circle {
     width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    border-radius: 50%;
     transition: all 0.3s ease;
 }
 
-.hexagon i {
-    font-size: 45px;
+/* Hover effect */
+.bg-white:hover .icon-circle {
+    background: linear-gradient(135deg, #009EE0, #0066CC);
+    color: white;
+    transform: scale(1.1);
 }
 
-/* Hover effect */
-.bg-white:hover .hexagon {
-    background: #009EE0;
-    color: white;
-    transform: rotate(5deg);
+/* Gradient text for headings */
+.text-gradient {
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    background-image: linear-gradient(135deg, #009EE0, #0066CC);
 }
 </style>

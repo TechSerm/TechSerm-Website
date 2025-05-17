@@ -18,8 +18,7 @@
                             <h2 class="text-3xl md:text-4xl font-bold mt-2 mb-4 techserm-text-black">Your Goal is Our
                                 Achievement</h2>
                             <p class="text-gray-600 leading-relaxed">
-                                Nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat sed diam voluptua.
-                                At vero eos et accusam et justo duo dolores et rebum.
+                                At Techserm, your success is at the heart of everything we do. We combine technical expertise with a deep understanding of your business needs to deliver reliable, scalable, and future-ready digital solutions.
                             </p>
                         </div>
 
@@ -32,7 +31,7 @@
                                     </div>
                                 </div>
                                 <div class="ml-3">
-                                    <p class="text-gray-700">Vero eos et accusam et justo duo dolores et rebum.</p>
+                                    <p class="text-gray-700">We listen first and build with purpose.</p>
                                 </div>
                             </li>
                             <li class="flex items-start">
@@ -43,7 +42,7 @@
                                     </div>
                                 </div>
                                 <div class="ml-3">
-                                    <p class="text-gray-700">At vero eos et accusam et justo duo dolores et rebum.</p>
+                                    <p class="text-gray-700">We deliver high-quality software on time and within budget.</p>
                                 </div>
                             </li>
                             <li class="flex items-start">
@@ -54,7 +53,18 @@
                                     </div>
                                 </div>
                                 <div class="ml-3">
-                                    <p class="text-gray-700">Dvero eos et accusam et justo duo dolores et rebum.</p>
+                                    <p class="text-gray-700">We stay agile, innovative, and committed to your growth.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="flex-shrink-0">
+                                    <div
+                                        class="flex items-center justify-center h-6 w-6 rounded-full techserm-bg-blue text-white">
+                                        <i class="fas fa-check text-xs"></i>
+                                    </div>
+                                </div>
+                                <div class="ml-3">
+                                    <p class="text-gray-700">We’re more than developers — we’re your technology partner.</p>
                                 </div>
                             </li>
                         </ul>
