@@ -1,12 +1,15 @@
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted, watch } from 'vue'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
 
 const navItems = [
-    { name: 'Home', href: '#home', icon: 'fa-home' },
-    { name: 'About', href: '#about', icon: 'fa-info-circle' },
-    { name: 'Services', href: '#services', icon: 'fa-cogs' },
-    { name: 'Projects', href: '#projects', icon: 'fa-briefcase' },
-    { name: 'Contact', href: '#contact', icon: 'fa-envelope' }
+    { name: 'Home', path: '/', href: '#home', icon: 'fa-home' },
+    { name: 'About', path: '/about', href: '#about', icon: 'fa-info-circle' },
+    { name: 'Services', path: '/services', href: '#services', icon: 'fa-cogs' },
+    { name: 'Projects', path: '/projects', href: '#projects', icon: 'fa-briefcase' },
+    { name: 'Contact', path: '/contact', href: '#contact', icon: 'fa-envelope' }
 ]
 
 const isMobileMenuOpen = ref(false)
@@ -37,6 +40,20 @@ const onScroll = () => {
     lastScrollPosition = currentScrollPosition
 }
 
+const isHome = () => {
+    return false;
+    return window.location.pathname === '/'
+}
+
+const activeLink = () => {
+    if(isHome()){
+        return currentSection.value === router.currentRoute.value.hash
+    }
+    const pathSegments = router.currentRoute.value.path.split('/')
+    const secondSegment = pathSegments[1]
+    currentSection.value = "#"+secondSegment
+}
+
 const scrollToSection = (selector) => {
     const el = document.querySelector(selector)
     if (el) {
@@ -47,6 +64,7 @@ const scrollToSection = (selector) => {
 }
 
 onMounted(() => {
+    activeLink()
     window.addEventListener('scroll', onScroll)
     onScroll() // initialize current section on page load
 })
@@ -54,6 +72,13 @@ onMounted(() => {
 onUnmounted(() => {
     window.removeEventListener('scroll', onScroll)
 })
+
+watch(() => router.currentRoute.value.path, () => {
+    activeLink()
+})
+
+
+
 </script>
 
 <template>
@@ -75,7 +100,7 @@ onUnmounted(() => {
             <!-- Desktop Navigation -->
             <ul class="hidden lg:flex space-x-6">
                 <li v-for="item in navItems" :key="item.name">
-                    <a href="#" @click.prevent="scrollToSection(item.href)"
+                    <a v-if="isHome()" href="#" @click.prevent="scrollToSection(item.href)"
                         :class="[
                             'flex items-center font-bold transition-colors duration-300',
                             currentSection === item.href ? 'text-[#009EE0]' : 'text-[#003D5A] hover:text-[#009EE0]'
@@ -83,6 +108,14 @@ onUnmounted(() => {
                         <i class="fas mr-2 text-sm" :class="item.icon"></i>
                         {{ item.name }}
                     </a>
+                    <router-link v-else :to="item.path"
+                        :class="[
+                            'flex items-center font-bold transition-colors duration-300',
+                            currentSection === item.href ? 'text-[#009EE0]' : 'text-[#003D5A] hover:text-[#009EE0]'
+                        ]">
+                        <i class="fas mr-2 text-sm" :class="item.icon"></i>
+                        {{ item.name }}
+                    </router-link>
                 </li>
             </ul>
 
@@ -90,12 +123,18 @@ onUnmounted(() => {
             <div v-if="isMobileMenuOpen" class="absolute top-full left-0 w-full bg-white lg:hidden shadow-lg">
                 <ul class="flex flex-col divide-y">
                     <li v-for="item in navItems" :key="item.name" class="px-4 py-3 hover:bg-gray-100">
-                        <a href="#" @click.prevent="scrollToSection(item.href)"
+                        <a v-if="isHome()" href="#" @click.prevent="scrollToSection(item.href)"
                             class="flex items-center"
                             :class="currentSection === item.href ? 'text-[#009EE0]' : 'text-gray-600'">
                             <i class="fas mr-3" :class="item.icon"></i>
                             <span>{{ item.name }}</span>
                         </a>
+                        <router-link v-else :to="item.path"
+                            class="flex items-center"
+                            :class="currentSection === item.href ? 'text-[#009EE0]' : 'text-gray-600'">
+                            <i class="fas mr-3" :class="item.icon"></i>
+                            <span>{{ item.name }}</span>
+                        </router-link>
                     </li>
                 </ul>
             </div>

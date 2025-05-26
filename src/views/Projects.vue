@@ -7,7 +7,7 @@
   </div>
 </div>
     <section id="projects" class="container pt-10 md:pt-0 flex items-center">
-        <ProjectsSection :data="data" />
+        <ProjectsSection :projects="data.projects.project_list" />
     </section>
 </template>
 

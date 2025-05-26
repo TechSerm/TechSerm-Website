@@ -22,11 +22,11 @@
 	        </div>
         </div>
     </section>
-    <section id="about" class="container mt-20 mb-40 md:pt-0">
+    <section id="about" class="container mt-20 mb-15 md:pt-0">
         <AboutSection :data="data.general.about" />
     </section>
     <div class="servicess bg-white" id="">
-        <div class="container lg:pb-30 py-15">
+        <div class="container lg:pb-30 py-10">
             <WhySection :data="data.general.services" />
         </div>
     </div>
@@ -36,9 +36,18 @@
             <ServicesSection :data="data.general.services" />
         </div>
     </div>
-    
- 
 
+    <section id="projects" class="">
+        <div class="container lg:pb-30 py-15">
+            <ProjectsSection :projects="data.projects" />
+        </div>
+    </section>
+    
+    <section id="contact" class="bg-gray-100">
+        <div class="container lg:pb-30 py-15">
+            <ContactSection :data="data" />
+        </div>
+    </section>
 </template>
 
 
@@ -47,7 +56,8 @@ import HeaderSection from '../components/HeaderSection.vue'
 import AboutSection from '../components/AboutSection.vue'
 import ServicesSection from '../components/ServicesSection.vue'
 import WhySection from '../components/WhySection.vue'
-
+import ProjectsSection from '../components/home/ProjectsSection.vue'
+import ContactSection from '../components/ContactSection.vue'
 defineProps({
     data: Object
 })

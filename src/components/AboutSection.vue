@@ -26,12 +26,12 @@ defineProps({
           <!-- Stats Card 1 -->
           <div class="relative group">
             <div class="h-40 bg-gradient-to-r from-[#009EE0] to-[#003D5A] rounded-xl overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1579389083078-4e7018379f7e" 
+              <img src="https://images.unsplash.com/photo-1552664730-d307ca884978" 
                    alt="Our Team" 
                    class="w-full h-full object-cover opacity-70 group-hover:opacity-90 transition duration-300">
             </div>
             <div class="absolute -bottom-16 left-1/2 transform -translate-x-1/2 w-5/6">
-              <div class="bg-white p-6 rounded-lg shadow-xl text-center border border-gray-200 hover:shadow-2xl transition duration-300">
+              <div class="bg-white p-6 rounded-lg shadow-md text-center border border-gray-200 hover:shadow-2xl transition duration-300">
                 <p class="text-5xl font-bold text-[#003D5A]">15+</p>
                 <p class="text-xl font-semibold text-[#003D5A] mt-2">Team Members</p>
               </div>
@@ -42,12 +42,12 @@ defineProps({
           <!-- Stats Card 2 -->
           <div class="relative group">
             <div class="h-40 bg-gradient-to-r from-[#003D5A] to-[#009EE0] rounded-xl overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1552664730-d307ca884978" 
+              <img src="https://images.unsplash.com/photo-1579389083078-4e7018379f7e" 
                    alt="Our Projects" 
                    class="w-full h-full object-cover opacity-50 group-hover:opacity-30 transition duration-300">
             </div>
             <div class="absolute -bottom-16 left-1/2 transform -translate-x-1/2 w-5/6">
-              <div class="bg-white p-6 rounded-lg shadow-xl text-center border border-gray-200 hover:shadow-2xl transition duration-300">
+              <div class="bg-white p-6 rounded-lg shadow-md text-center border border-gray-200 hover:shadow-2xl transition duration-300">
                 <p class="text-5xl font-bold text-[#003D5A]">50+</p>
                 <p class="text-xl font-semibold text-[#003D5A] mt-2">Successful Projects</p>
               </div>
