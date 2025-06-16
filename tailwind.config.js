@@ -1,7 +1,13 @@
-module.exports = {
-
-    purge: ['./resources/js/pages/*.vue', './resources/js/**/*.js'],
-  
+/** @type {import('tailwindcss').Config} */
+export default {
+    content: [
+        './components/**/*.{js,vue,ts}',
+        './layouts/**/*.vue',
+        './pages/**/*.vue',
+        './plugins/**/*.{js,ts}',
+        './app.vue',
+        './error.vue'
+    ],
     theme: {
         container: {
             center: true,
@@ -31,8 +37,5 @@ module.exports = {
             // You can add more custom extensions here if needed
         },
     },
-    variants: {
-        extend: {},
-    },
     plugins: [],
-  }
+}
