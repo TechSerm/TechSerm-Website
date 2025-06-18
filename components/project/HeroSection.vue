@@ -1,4 +1,27 @@
 <template>
+    <section class="relative h-[60vh] min-h-[500px] flex items-center">
+      <!-- Background Image -->
+      <div class="absolute inset-0">
+        <img :src="projectData.banner" :alt="projectData.title" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-r from-[#003D5A]/90 to-[#003D5A]/70"></div>
+      </div>
+
+      <!-- Content -->
+      <div class="container mx-auto px-4 relative z-10">
+        <div class="max-w-3xl">
+          <h1 class="text-4xl md:text-5xl font-bold text-white mb-6">
+            test
+          </h1>
+          <p class="text-xl text-white/90 mb-8">
+            test
+          </p>
+          <NuxtLink to="/contact"
+            class="inline-block bg-[#FF6B00] hover:bg-[#FF8533] text-white font-bold py-3 px-8 rounded-lg transition-colors duration-300">
+            Get Started
+          </NuxtLink>
+        </div>
+      </div>
+    </section>
     <section class="relative bg-[#F7F8EF] border-b border-t border-gray-200 shadow-sm">
 
         <div class="container pt-25 pb-25 grid md:grid-cols-2 gap-12 items-center">
@@ -69,6 +92,8 @@
         </div>
 
     </section>
+
+    
 </template>
 
 <script setup>

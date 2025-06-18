@@ -54,121 +54,34 @@
   </section> -->
 
   <!-- Services Section -->
-  <section class="py-20 bg-gray-50" v-if="data">
-    <div class="container mx-auto px-4">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-[#003D5A] mb-4">Our Services</h2>
-        <p class="text-xl text-gray-600 max-w-2xl mx-auto">
-          Comprehensive technology solutions tailored to your business needs
-        </p>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <template v-for="service in services" :key="service.title">
-          <div
-            class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 p-8">
-            <div
-              class="w-16 h-16 bg-gradient-to-br from-[#003D5A] to-[#009EE0] rounded-xl flex items-center justify-center mb-6">
-              <i :class="`fas ${service.icon} text-2xl text-white`"></i>
-            </div>
-            <h3 class="text-xl font-bold text-[#003D5A] mb-4">{{ service.title }}</h3>
-            <p class="text-gray-600 mb-6">{{ service.description }}</p>
-            <UButton to="/services" color="primary" variant="solid" size="lg"
-              class="w-full bg-[#003D5A] hover:bg-[#009EE0]">
-              Learn More
-            </UButton>
-          </div>
-        </template>
-      </div>
-    </div>
-  </section>
+  <div class="mt-24">
+    <ServicesSection />
+  </div>
 
   <!-- Projects Section -->
-  <section class="py-20" v-if="data">
-    <div class="container mx-auto px-4">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-[#003D5A] mb-4">Featured Projects</h2>
-        <p class="text-xl text-gray-600 max-w-2xl mx-auto">
-          Explore our portfolio of successful implementations
-        </p>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-        <template v-for="project in data.projects.project_list" :key="project.id">
-          <div
-            class="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-            <div class="relative overflow-hidden rounded-t-2xl">
-              <img :src="project.image" :alt="project.title"
-                class="w-full h-56 object-cover transform group-hover:scale-110 transition-transform duration-500">
-              <div
-                class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              </div>
-              <div class="absolute top-4 right-4">
-                <span class="bg-[#003D5A] text-white px-4 py-1.5 rounded-full text-sm font-medium shadow-lg">
-                  {{ project.category }}
-                </span>
-              </div>
-            </div>
-            <div class="p-8">
-              <h3
-                class="text-2xl font-bold text-[#003D5A] mb-3 group-hover:text-[#009EE0] transition-colors duration-300">
-                {{ project.title }}
-              </h3>
-              <p class="text-gray-600 mb-6 line-clamp-3">{{ project.description }}</p>
-              <div class="flex flex-wrap gap-2 mb-6">
-                <span v-for="tech in project.technologies" :key="tech"
-                  class="bg-gray-50 text-gray-700 px-3 py-1.5 rounded-full text-sm font-medium border border-gray-200 hover:bg-gray-100 transition-colors duration-300">
-                  {{ tech }}
-                </span>
-              </div>
-              <UButton :to="`/projects/${project.id}`" color="primary" variant="solid" size="lg"
-                class="w-full bg-[#003D5A] hover:bg-[#009EE0]">
-                View Details
-              </UButton>
-            </div>
-          </div>
-        </template>
-      </div>
-    </div>
-  </section>
+  <ProjectsSection :projects="data.projects.project_list" />
 
   <!-- CTA Section -->
-  <section class="py-20 bg-[#003D5A] text-white">
+  <section class="py-20 bg-blue-800 text-white">
     <div class="container mx-auto px-4 text-center">
       <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Start Your Project?</h2>
       <p class="text-xl opacity-90 mb-8 max-w-2xl mx-auto">
         Let's discuss how we can help transform your business with our technology solutions
       </p>
-      <UButton to="/contact" color="primary" variant="solid" size="lg" class="bg-[#009EE0] hover:bg-[#0086c3]">
+      <NuxtLink to="/contact" 
+        class="inline-block bg-[#009EE0] hover:bg-[#0086c3] text-white font-bold py-3 px-8 rounded-lg transition-colors duration-300">
         Get in Touch
-      </UButton>
+      </NuxtLink>
     </div>
   </section>
+
 </template>
 
 <script setup>
 import HeaderSection from '../components/HeaderSection.vue'
 import AboutSection from '../components/AboutSection.vue'
-import ServicesSection from '../components/ServicesSection.vue'
-import WhySection from '../components/WhySection.vue'
+import ServicesSection from '../components/home/ServicesSection.vue'
 import ProjectsSection from '../components/home/ProjectsSection.vue'
-import ContactSection from '../components/ContactSection.vue'
-
-const services = [
-  {
-    title: 'Custom Software Development',
-    icon: 'fa-laptop-code',
-    description: 'We build tailored software solutions from the ground up. Our team transforms your ideas into powerful, scalable applications with exceptional service and reliable results.'
-  },
-  {
-    title: 'Web Application Development',
-    icon: 'fa-globe',
-    description: 'We deliver cutting-edge web applications using modern technologies to build fast, secure, and scalable platforms that align with your business goals.'
-  },
-  {
-    title: 'Mobile Application Development',
-    icon: 'fa-mobile-alt',
-    description: 'We craft high-performance mobile apps for Android and iOS platforms, creating intuitive, responsive applications that delight users and drive engagement.'
-  }
-]
 
 defineProps({
   data: {

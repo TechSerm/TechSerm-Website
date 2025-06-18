@@ -1,0 +1,139 @@
+{
+  "technologies": [
+    {
+      "name": "Vue.js",
+      "description": "Progressive JavaScript framework for building user interfaces",
+      "icon": "IconVue",
+      "color": {
+        "bg": "bg-blue-50",
+        "text": "text-blue-700"
+      }
+    },
+    {
+      "name": "React",
+      "description": "JavaScript library for building user interfaces",
+      "icon": "IconReact",
+      "color": {
+        "bg": "bg-blue-50",
+        "text": "text-blue-700"
+      }
+    },
+    {
+      "name": "Node.js",
+      "description": "JavaScript runtime built on Chrome's V8 JavaScript engine",
+      "icon": "IconNode",
+      "color": {
+        "bg": "bg-green-50",
+        "text": "text-green-700"
+      }
+    },
+    {
+      "name": "TypeScript",
+      "description": "Typed superset of JavaScript that compiles to plain JavaScript",
+      "icon": "IconTypeScript",
+      "color": {
+        "bg": "bg-yellow-50",
+        "text": "text-yellow-700"
+      }
+    },
+    {
+      "name": "MongoDB",
+      "description": "NoSQL database program using JSON-like documents",
+      "icon": "IconMongoDB",
+      "color": {
+        "bg": "bg-purple-50",
+        "text": "text-purple-700"
+      }
+    },
+    {
+      "name": "AWS",
+      "description": "Cloud computing platform by Amazon",
+      "icon": "IconAWS",
+      "color": {
+        "bg": "bg-orange-50",
+        "text": "text-orange-700"
+      }
+    },
+    {
+      "name": "Azure",
+      "description": "Cloud computing platform by Microsoft",
+      "icon": "IconAzure",
+      "color": {
+        "bg": "bg-orange-50",
+        "text": "text-orange-700"
+      }
+    },
+    {
+      "name": "Docker",
+      "description": "Platform for developing, shipping, and running applications",
+      "icon": "IconDocker",
+      "color": {
+        "bg": "bg-red-50",
+        "text": "text-red-700"
+      }
+    },
+    {
+      "name": "Kubernetes",
+      "description": "Container orchestration platform",
+      "icon": "IconKubernetes",
+      "color": {
+        "bg": "bg-red-50",
+        "text": "text-red-700"
+      }
+    },
+    {
+      "name": "Flutter",
+      "description": "UI framework for building natively compiled applications",
+      "icon": "IconFlutter",
+      "color": {
+        "bg": "bg-indigo-50",
+        "text": "text-indigo-700"
+      }
+    },
+    {
+      "name": "Swift",
+      "description": "Programming language for iOS development",
+      "icon": "IconSwift",
+      "color": {
+        "bg": "bg-indigo-50",
+        "text": "text-indigo-700"
+      }
+    },
+    {
+      "name": "Kotlin",
+      "description": "Modern programming language for Android development",
+      "icon": "IconKotlin",
+      "color": {
+        "bg": "bg-pink-50",
+        "text": "text-pink-700"
+      }
+    },
+    {
+      "name": "Express.js",
+      "description": "Web application framework for Node.js",
+      "icon": "IconExpress",
+      "color": {
+        "bg": "bg-green-50",
+        "text": "text-green-700"
+      }
+    },
+    {
+      "name": "MySQL",
+      "description": "Open-source relational database management system",
+      "icon": "IconMySQL",
+      "color": {
+        "bg": "bg-purple-50",
+        "text": "text-purple-700"
+      }
+    },
+    {
+      "name": "JavaScript",
+      "description": "High-level, interpreted programming language",
+      "icon": "IconJavaScript",
+      "color": {
+        "bg": "bg-yellow-50",
+        "text": "text-yellow-700"
+      }
+    }
+  ]
+} 

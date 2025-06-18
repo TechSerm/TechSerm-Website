@@ -19,7 +19,8 @@ export default defineNuxtConfig({
         }
       ],
       link: [
-        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+        { rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css' }
       ]
     },
     baseURL: '/'
@@ -30,12 +31,32 @@ export default defineNuxtConfig({
     }
   },
   nitro: {
-    preset: 'static'
+    prerender: {
+      crawlLinks: true,
+      routes: ['/']
+    },
+    minify: true,
+    compressPublicAssets: true,
+    routeRules: {
+      '/**': {
+        headers: {
+          'Cache-Control': 'public, max-age=31536000, immutable'
+        }
+      }
+    }
   },
+  ssr: false,
   experimental: {
     payloadExtraction: false
   },
   typescript: {
     strict: false
+  },
+  vite: {
+    server: {
+      hmr: {
+        protocol: 'ws'
+      }
+    }
   }
 })

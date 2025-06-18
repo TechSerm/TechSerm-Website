@@ -92,13 +92,7 @@ watch(() => router.currentRoute.value.path, () => {
             <div v-if="isMobileMenuOpen" class="absolute top-full left-0 w-full bg-white lg:hidden shadow-lg">
                 <ul class="flex flex-col divide-y">
                     <li v-for="item in navItems" :key="item.name" class="px-4 py-3 hover:bg-gray-100">
-                        <a v-if="isHome()" href="#" @click.prevent="scrollToSection(item.href)"
-                            class="flex items-center"
-                            :class="currentSection === item.href ? 'text-[#009EE0]' : 'text-gray-600'">
-                            <i class="fas mr-3" :class="item.icon"></i>
-                            <span>{{ item.name }}</span>
-                        </a>
-                        <router-link v-else :to="item.path"
+                        <router-link :to="item.path"
                             class="flex items-center"
                             :class="currentSection === item.href ? 'text-[#009EE0]' : 'text-gray-600'">
                             <i class="fas mr-3" :class="item.icon"></i>
