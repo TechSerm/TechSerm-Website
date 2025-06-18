@@ -8,6 +8,7 @@ export default defineNuxtConfig({
   ],
   css: ['~/assets/css/style.css'],
   app: {
+    buildAssetsDir: '/_assets/',
     head: {
       title: 'TechSerm - Your Trusted IT Partner',
       meta: [
@@ -30,7 +31,13 @@ export default defineNuxtConfig({
       apiBase: process.env.NUXT_PUBLIC_API_BASE || 'http://admin.techserm.io'
     }
   },
+  unhead: {
+    renderSSRHeadOptions: {
+      omitLineBreaks: true
+    }
+  },
   nitro: {
+    preset: 'static',
     prerender: {
       crawlLinks: true,
       routes: ['/']
@@ -40,12 +47,17 @@ export default defineNuxtConfig({
     routeRules: {
       '/**': {
         headers: {
-          'Cache-Control': 'public, max-age=31536000, immutable'
+          'Cache-Control': 'public, max-age=31536000, immutable',
+          'X-Content-Type-Options': 'nosniff',
+          'X-Frame-Options': 'DENY',
+          'X-XSS-Protection': '1; mode=block',
+          'Referrer-Policy': 'strict-origin-when-cross-origin',
+          'Permissions-Policy': 'camera=(), microphone=(), geolocation=()',
         }
       }
     }
   },
-  ssr: false,
+  ssr: true,
   experimental: {
     payloadExtraction: false
   },
@@ -58,5 +70,5 @@ export default defineNuxtConfig({
         protocol: 'ws'
       }
     }
-  }
+  },
 })
