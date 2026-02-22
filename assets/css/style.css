@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background-color: #ffffff;
+}
+
+@layer components {
+    .techserm-text-blue {
+        color: #009EE0;
+    }
+
+    .techserm-text-black {
+        color: #003D5A;
+    }
+
+    .techserm-bg-blue {
+        background-color: #009EE0;
+    }
+
+    .techserm-bg-black {
+        background-color: #003D5A;
+    }
+
+    .main-btn {
+        @apply rounded-full cursor-pointer inline-flex items-center justify-center font-semibold text-lg py-3 px-8 relative text-center border-0 shadow-lg transition-all duration-300 ease-in-out overflow-hidden z-10;
+    }
+
+    .main-btn::before {
+        content: '';
+        @apply absolute top-0 left-0 w-full h-full opacity-90 -z-10;
+    }
+
+    .main-btn:hover {
+        @apply opacity-90;
+    }
+
+    .container {
+        @apply w-11/12 md:w-11/12 lg:w-11/12 xl:w-9/12 mx-auto;
+    }
+}

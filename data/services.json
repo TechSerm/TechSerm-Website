@@ -1,0 +1,136 @@
+{
+  "services": [
+    {
+      "id": 1,
+      "slug": "web-development",
+      "title": "Web Development",
+      "shortDescription": "Custom web solutions tailored to your business needs",
+      "description": "We create modern, responsive, and scalable web applications that help businesses grow their online presence. Our web development services cover everything from simple websites to complex web applications.",
+      "icon": "code",
+      "features": [
+        "Custom Website Development",
+        "E-commerce Solutions",
+        "Content Management Systems",
+        "Progressive Web Apps",
+        "API Development",
+        "Website Maintenance"
+      ],
+      "technologies": [
+        "React",
+        "Vue.js",
+        "Node.js",
+        "Laravel",
+        "WordPress",
+        "Shopify"
+      ],
+      "image": "/images/services/web-development.jpg",
+      "benefits": [
+        "Responsive Design",
+        "SEO Friendly",
+        "Fast Loading Speed",
+        "Secure & Scalable",
+        "User-Friendly Interface",
+        "Cross-browser Compatibility"
+      ]
+    },
+    {
+      "id": 2,
+      "slug": "mobile-app-development",
+      "title": "Mobile App Development",
+      "shortDescription": "Native and cross-platform mobile applications",
+      "description": "We develop high-performance mobile applications for iOS and Android platforms. Our mobile solutions are designed to provide seamless user experiences and robust functionality.",
+      "icon": "mobile",
+      "features": [
+        "iOS App Development",
+        "Android App Development",
+        "Cross-platform Development",
+        "App UI/UX Design",
+        "App Testing & QA",
+        "App Store Optimization"
+      ],
+      "technologies": [
+        "React Native",
+        "Flutter",
+        "Swift",
+        "Kotlin",
+        "Firebase",
+        "AWS"
+      ],
+      "image": "/images/services/mobile-app.jpg",
+      "benefits": [
+        "Native Performance",
+        "Cross-platform Compatibility",
+        "Offline Functionality",
+        "Push Notifications",
+        "Real-time Updates",
+        "Secure Data Storage"
+      ]
+    },
+    {
+      "id": 3,
+      "slug": "cloud-solutions",
+      "title": "Cloud Solutions",
+      "shortDescription": "Scalable and secure cloud infrastructure",
+      "description": "We provide comprehensive cloud solutions to help businesses migrate, manage, and optimize their cloud infrastructure. Our services ensure high availability, security, and cost-effectiveness.",
+      "icon": "cloud",
+      "features": [
+        "Cloud Migration",
+        "Cloud Architecture",
+        "DevOps Services",
+        "Cloud Security",
+        "Serverless Solutions",
+        "Cloud Optimization"
+      ],
+      "technologies": [
+        "AWS",
+        "Azure",
+        "Google Cloud",
+        "Docker",
+        "Kubernetes",
+        "Terraform"
+      ],
+      "image": "/images/services/cloud.jpg",
+      "benefits": [
+        "Scalable Infrastructure",
+        "Cost Optimization",
+        "High Availability",
+        "Enhanced Security",
+        "Automated Operations",
+        "Disaster Recovery"
+      ]
+    },
+    {
+      "id": 4,
+      "slug": "digital-marketing",
+      "title": "Digital Marketing",
+      "shortDescription": "Data-driven digital marketing strategies",
+      "description": "We help businesses grow their online presence through effective digital marketing strategies. Our comprehensive approach covers SEO, social media, content marketing, and more.",
+      "icon": "chart",
+      "features": [
+        "Search Engine Optimization",
+        "Social Media Marketing",
+        "Content Marketing",
+        "Email Marketing",
+        "PPC Advertising",
+        "Analytics & Reporting"
+      ],
+      "technologies": [
+        "Google Analytics",
+        "SEMrush",
+        "Mailchimp",
+        "HubSpot",
+        "Facebook Ads",
+        "Google Ads"
+      ],
+      "image": "/images/services/digital-marketing.jpg",
+      "benefits": [
+        "Increased Visibility",
+        "Higher Conversion Rates",
+        "Better ROI",
+        "Targeted Audience Reach",
+        "Data-driven Decisions",
+        "Brand Awareness"
+      ]
+    }
+  ]
+} 
