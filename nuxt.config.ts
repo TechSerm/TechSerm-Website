@@ -37,17 +37,17 @@ export default defineNuxtConfig({
     }
   },
   nitro: {
-    preset: 'static',
-    prerender: {
-      crawlLinks: true,
-      routes: ['/']
-    },
+    preset: 'vercel',
     minify: true,
     compressPublicAssets: true,
     routeRules: {
-      '/**': {
+      '/_assets/**': {
         headers: {
           'Cache-Control': 'public, max-age=31536000, immutable',
+        }
+      },
+      '/**': {
+        headers: {
           'X-Content-Type-Options': 'nosniff',
           'X-Frame-Options': 'DENY',
           'X-XSS-Protection': '1; mode=block',
