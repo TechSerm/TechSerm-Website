@@ -1,21 +1,31 @@
 <template>
-  <div>
+  <div v-if="project">
     <!-- Hero Section -->
     <section class="relative h-[600px] bg-gray-900">
       <!-- Background Image with Overlay -->
-      <img src="https://admin.techserm.io/storage/config/01JVKPC6C6BE4X2JFY11TXT03J.png" 
-           alt="Background" 
+      <img :src="project.basic.banner"
+           :alt="project.basic.title"
            class="absolute inset-0 w-full h-full object-cover opacity-30">
       <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-transparent"></div>
-      
+
       <div class="relative container h-full">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center h-full">
           <!-- Left Content -->
           <div class="max-w-2xl">
-            <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">{{ project.title }}</h1>
-            <p class="text-xl text-gray-200 mb-8">{{ project.description }}</p>
-            <div class="flex flex-wrap gap-4">
-              <span v-for="tech in project.technologies" :key="tech"
+            <div class="flex flex-wrap items-center gap-3 mb-4">
+              <span v-if="project.basic.project_type"
+                class="px-4 py-2 rounded-full text-sm backdrop-blur-sm bg-blue-50 text-blue-700">
+                {{ project.basic.project_type }}
+              </span>
+              <span v-if="project.basic.client"
+                class="px-4 py-2 rounded-full text-sm backdrop-blur-sm bg-orange-50 text-orange-700">
+                {{ project.basic.client }}
+              </span>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">{{ project.basic.title }}</h1>
+            <p class="text-xl text-gray-200 mb-8">{{ project.basic.short_descriptions }}</p>
+            <div v-if="technologyList.length" class="flex flex-wrap gap-4">
+              <span v-for="tech in technologyList" :key="tech"
                     :class="[
                       'px-4 py-2 rounded-full text-sm backdrop-blur-sm',
                       getTechnologyDetails(tech).color.bg,
@@ -25,12 +35,12 @@
               </span>
             </div>
           </div>
-          
+
           <!-- Right Image -->
           <div class="hidden lg:block relative">
             <div class="relative w-full h-[400px] rounded-2xl border-1 border-gray-500 overflow-hidden shadow-2xl">
-              <img src="https://admin.techserm.io/storage/config/01JVKPC6C6BE4X2JFY11TXT03J.png" 
-                   alt="Project Preview" 
+              <img :src="project.basic.banner"
+                   :alt="project.basic.title"
                    class="absolute inset-0 w-full h-full object-cover transform hover:scale-105 transition-transform duration-500">
               <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
             </div>
@@ -48,21 +58,7 @@
             <div class="prose prose-lg max-w-none">
               <h2 class="text-3xl font-bold text-gray-900 mb-8">Project Overview</h2>
               <div class="space-y-6 text-gray-600">
-                <p>{{ project.overview }}</p>
-
-                <div v-if="project.challenges" class="bg-gray-50 p-6 rounded-xl mt-16">
-                  <h3 class="text-xl font-semibold text-gray-900 mb-4">Challenges & Solutions</h3>
-                  <ul class="space-y-4">
-                    <li v-for="(challenge, index) in project.challenges" :key="index" class="flex items-start">
-                      <span class="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0 mr-3 mt-1">
-                        <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                        </svg>
-                      </span>
-                      <span>{{ challenge }}</span>
-                    </li>
-                  </ul>
-                </div>
+                <p>{{ project.basic.descriptions || project.basic.short_descriptions }}</p>
               </div>
             </div>
           </div>
@@ -72,18 +68,18 @@
             <div class="bg-white rounded-xl shadow-lg p-6 sticky top-6">
               <h3 class="text-xl font-semibold text-gray-900 mb-6">Project Details</h3>
               <div class="space-y-6">
-                <div>
+                <div v-if="project.basic.client">
                   <h4 class="text-sm font-medium text-gray-500 mb-2">Client</h4>
-                  <p class="text-gray-900">{{ project.client }}</p>
+                  <p class="text-gray-900">{{ project.basic.client }}</p>
                 </div>
-                <div>
-                  <h4 class="text-sm font-medium text-gray-500 mb-2">Duration</h4>
-                  <p class="text-gray-900">{{ project.duration }}</p>
+                <div v-if="project.basic.project_type">
+                  <h4 class="text-sm font-medium text-gray-500 mb-2">Project Type</h4>
+                  <p class="text-gray-900">{{ project.basic.project_type }}</p>
                 </div>
-                <div>
+                <div v-if="technologyList.length">
                   <h4 class="text-sm font-medium text-gray-500 mb-2">Technologies Used</h4>
                   <div class="flex flex-wrap gap-2">
-                    <span v-for="tech in project.technologies" :key="tech"
+                    <span v-for="tech in technologyList" :key="tech"
                           :class="[
                             'px-3 py-1 rounded-full text-sm',
                             getTechnologyDetails(tech).color.bg,
@@ -93,19 +89,6 @@
                     </span>
                   </div>
                 </div>
-                <div v-if="project.results" class="pt-6 border-t">
-                  <h4 class="text-sm font-medium text-gray-500 mb-2">Results</h4>
-                  <ul class="space-y-2">
-                    <li v-for="(result, index) in project.results" :key="index" class="flex items-start">
-                      <span class="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mr-2 mt-0.5">
-                        <svg class="w-3 h-3 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                        </svg>
-                      </span>
-                      <span class="text-gray-700">{{ result }}</span>
-                    </li>
-                  </ul>
-                </div>
               </div>
             </div>
           </div>
@@ -114,21 +97,22 @@
     </section>
 
     <!-- Features Section -->
-    <section class="py-16 bg-gray-50">
+    <section v-if="project.features && project.features.length" class="py-16 bg-gray-50">
       <div class="container">
         <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">Key Features</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div v-for="(feature, index) in project.features" :key="index" 
-               class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+          <div v-for="(feature, index) in project.features" :key="index"
+               @click="selectedFeature = feature"
+               class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer">
             <div class="relative h-[250px]">
-              <img :src="feature.screenshot" 
+              <img :src="feature.image"
                    :alt="feature.title"
                    class="w-full h-full object-cover">
               <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
             </div>
             <div class="p-8">
               <h3 class="text-2xl font-semibold text-gray-900 mb-4">{{ feature.title }}</h3>
-              <p class="text-gray-600 mb-6">{{ feature.description }}</p>
+              <p class="text-gray-600 mb-6">{{ feature.descriptions }}</p>
             </div>
           </div>
         </div>
@@ -140,22 +124,55 @@
       <div class="container mx-auto px-4 text-center">
         <h2 class="text-3xl font-bold text-white mb-6">Ready to Start Your Project?</h2>
         <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">Let's discuss how we can help bring your vision to life with our expertise and innovative solutions.</p>
-        <NuxtLink to="/contact" 
+        <NuxtLink to="/contact"
                  class="inline-block bg-[#FF6B00] text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-[#FF8533] transition-colors duration-300">
           Get in Touch
         </NuxtLink>
       </div>
     </section>
+
+    <!-- Feature Modal -->
+    <Teleport to="body">
+      <div v-if="selectedFeature" class="fixed inset-0 z-50 flex items-center justify-center p-4"
+           @click.self="selectedFeature = null">
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" @click="selectedFeature = null"></div>
+        <div class="relative bg-white rounded-2xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-hidden">
+          <!-- Close Button -->
+          <button @click="selectedFeature = null"
+                  class="absolute top-4 right-4 z-10 w-10 h-10 bg-black/50 hover:bg-black/70 rounded-full flex items-center justify-center transition-colors duration-200">
+            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+          <!-- Image -->
+          <div class="relative h-[350px]">
+            <img :src="selectedFeature.image" :alt="selectedFeature.title"
+                 class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+          </div>
+          <!-- Content -->
+          <div class="p-8">
+            <h3 class="text-2xl font-bold text-gray-900 mb-4">{{ selectedFeature.title }}</h3>
+            <p class="text-gray-600 text-lg leading-relaxed">{{ selectedFeature.descriptions }}</p>
+          </div>
+        </div>
+      </div>
+    </Teleport>
   </div>
 </template>
 
 <script setup>
 const route = useRoute()
 
-// Import technologies data with proper error handling
+const props = defineProps({
+  data: {
+    type: Object,
+    required: true
+  }
+})
+
 const { data: technologiesData } = await useFetch('/data/technologies.json')
 
-// Function to get technology details with proper error handling
 const getTechnologyDetails = (techName) => {
   if (!technologiesData.value?.technologies) {
     return {
@@ -184,46 +201,21 @@ const getTechnologyDetails = (techName) => {
   }
 }
 
-const project = ref({
-  title: 'E-commerce Platform Development',
-  description: 'A modern e-commerce platform built with Vue.js and Node.js, featuring real-time inventory management and secure payment processing.',
-  image: '/images/projects/ecommerce.jpg',
-  client: 'Fashion Retailer Inc.',
-  duration: '6 months',
-  technologies: ['Vue.js', 'Node.js', 'MongoDB', 'AWS', 'Docker'],
-  overview: 'Developed a comprehensive e-commerce platform that handles over 10,000 daily transactions. The platform features a modern, responsive design, real-time inventory management, and secure payment processing. We implemented advanced search functionality, personalized recommendations, and a robust admin dashboard.',
-  features: [
-    {
-      title: 'Real-time Inventory Management',
-      description: 'Advanced inventory tracking system with real-time updates across multiple warehouses and retail locations.',
-      screenshot: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80',
-      technologies: ['WebSocket', 'Redis', 'Node.js']
-    },
-    {
-      title: 'Secure Payment Processing',
-      description: 'Integrated multiple payment gateways with PCI compliance and fraud detection systems.',
-      screenshot: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&q=80',
-      technologies: ['Stripe', 'PayPal', 'SSL']
-    },
-    {
-      title: 'Admin Dashboard',
-      description: 'Comprehensive admin interface for managing products, orders, customers, and analytics.',
-      screenshot: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80',
-      technologies: ['Vue.js', 'Chart.js', 'Material UI']
-    }
-  ],
-  challenges: [
-    'Implementing real-time inventory synchronization across multiple warehouses',
-    'Ensuring secure payment processing and PCI compliance',
-    'Optimizing database queries for high-traffic periods',
-    'Creating a scalable architecture to handle peak shopping seasons'
-  ],
-  results: [
-    '40% increase in online sales',
-    '99.9% uptime during peak shopping seasons',
-    '50% reduction in page load time',
-    'Improved customer satisfaction scores'
-  ]
+const selectedFeature = ref(null)
+
+watch(selectedFeature, (val) => {
+  document.body.style.overflow = val ? 'hidden' : ''
+})
+
+const project = computed(() => {
+  if (!props.data?.projects?.project_list) return null
+  return props.data.projects.project_list.find(
+    p => p.basic.slug === route.params.id
+  )
+})
+
+const technologyList = computed(() => {
+  if (!project.value?.technology) return []
+  return project.value.technology.split(',').map(t => t.trim()).filter(Boolean)
 })
 </script>
-  
