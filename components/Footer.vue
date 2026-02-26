@@ -1,5 +1,5 @@
 <template>
-    <footer class="bg-[#003D5A] text-white">
+    <footer class="techserm-bg-black text-white">
         <div class="container mx-auto px-4 py-12">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Company Info -->
