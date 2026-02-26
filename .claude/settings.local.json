@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls -la \"d:\\\\per_project\\\\techserm\\\\TechSerm-Website\\\\pages\\\\projects\"\" 2>/dev/null || echo \"Directory may not exist \")",
+      "Bash(npm install swiper)",
+      "Bash(npm run build)",
+      "Bash(npm run dev)",
+      "Bash(npx nuxi typecheck)",
+      "Bash(npx nuxi build)"
+    ]
+  }
+}
